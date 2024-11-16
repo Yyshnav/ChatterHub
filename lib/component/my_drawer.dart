@@ -1,4 +1,6 @@
 import 'package:chatapp/auth/auth_service.dart';
+import 'package:chatapp/pages/settings.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -35,11 +37,19 @@ class MyDrawer extends StatelessWidget {
                   },
                 ),
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(left: 25.0),
                 child: ListTile(
                   title: Text("S E T T I N G S"),
                   leading: Icon(Icons.settings),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SettingsPage(),
+                        ));
+                  },
                 ),
               ),
             ],

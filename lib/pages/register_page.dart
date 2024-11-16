@@ -13,48 +13,28 @@ class RegisterPage extends StatelessWidget {
   TextEditingController _pwController = TextEditingController();
   TextEditingController _cmController = TextEditingController();
   final void Function()? onTap;
+
   void Register(BuildContext context) async {
     final _auth = AuthService();
-    if (_pwController.text != _cmController.text) {
-      // Show error if passwords do not match
+    if (_pwController.text == _cmController.text) {
+      try {
+        _auth.signupWithEmailAndPassword(
+            _emController.text, _pwController.text);
+      } catch (e) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text(
+              e.toString(),
+            ),
+          ),
+        );
+      }
+    } else {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text("Error"),
-          content: Text("Passwords do not match. Please try again."),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Close the dialog
-              },
-              child: Text("OK"),
-            ),
-          ],
-        ),
-      );
-      return; // Exit the function early
-    }
-
-    try {
-      await _auth.signupWithEmailAndPassword(
-        _emController.text,
-        _pwController.text,
-      );
-      // Optionally navigate to another screen or show a success message
-    } catch (e) {
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text("Error"),
-          content: Text(e.toString()), // Display error message
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Close the dialog
-              },
-              child: Text("OK"),
-            ),
-          ],
+          title: Text("password doenot match"),
         ),
       );
     }

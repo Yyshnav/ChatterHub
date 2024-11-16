@@ -22,7 +22,10 @@ class UserTile extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Text(text),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(text),
+            ),
           ],
         ),
       ),

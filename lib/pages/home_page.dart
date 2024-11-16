@@ -12,11 +12,6 @@ class Homepage extends StatefulWidget {
   State<Homepage> createState() => _HomepageState();
 }
 
-void logout() {
-  final _auth = AuthService();
-  _auth.signout();
-}
-
 final Chatservices _chatservice = Chatservices();
 final AuthService _authService = AuthService();
 
@@ -25,10 +20,13 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text("Homepage")),
-        actions: [
-          IconButton(onPressed: () => logout, icon: Icon(Icons.login_outlined))
-        ],
+        title: Padding(
+          padding: const EdgeInsets.all(46.0),
+          child: Text("CHATTERHUB"),
+        ),
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.grey,
+        elevation: 0,
       ),
       drawer: MyDrawer(),
       body: _builduserList(),
@@ -65,6 +63,7 @@ class _HomepageState extends State<Homepage> {
               MaterialPageRoute(
                 builder: (context) => ChatPage(
                   receiverEmail: userData["email"],
+                  receiverId: userData["uid"],
                 ),
               ));
         },
