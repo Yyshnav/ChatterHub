@@ -18,7 +18,7 @@ class UserTile extends StatelessWidget {
         padding: EdgeInsets.all(20),
         child: Row(
           children: [
-            Icon(Icons.person),
+            CircleAvatar(child: Icon(Icons.person)),
             SizedBox(
               height: 20,
             ),
