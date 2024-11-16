@@ -120,13 +120,13 @@ class _ChatPageState extends State<ChatPage> {
 
   Widget _builduserInput() {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 50.0),
+      padding: const EdgeInsets.only(bottom: 20.0, left: 10),
       child: Row(
         children: [
           Expanded(
               child: MyTextfield(
                   focusNode: myfocusNode,
-                  hintText: "Type a message",
+                  hintText: "Type a message...",
                   obsecureText: false,
                   controller: _msgControler)),
           Container(
