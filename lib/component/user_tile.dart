@@ -19,7 +19,7 @@ class UserTile extends StatelessWidget {
         child: Row(
           children: [
             CircleAvatar(child: Icon(Icons.person)),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
